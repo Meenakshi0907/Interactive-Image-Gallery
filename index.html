@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tangled Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:focus, .gallery img:hover {
+            outline: none;
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Tangled Photo Gallery</h1>
+        <p class="description">Explore the collection of The Tangled Gallery</p>
+        <div class="gallery">
+            <img src="https://assets1.ignimgs.com/2018/05/16/17-1526514889939.jpg" alt="Description of image 1" tabindex="0">
+            <img src="https://i.pinimg.com/originals/80/0a/b3/800ab3cb060be0a57f46060143200d1a.jpg" alt="Description of image 2" tabindex="0">
+            <img src="https://wallpapercat.com/w/middle-retina/f/8/f/181273-3840x2160-desktop-4k-tangled-wallpaper-image.jpg" alt="Description of image 3" tabindex="0">
+            <img src="https://wallpapercat.com/w/middle-retina/8/c/f/51656-3840x2160-desktop-4k-tangled-background.jpg" alt="Description of image 4" tabindex="0">
+            <img src="https://i.pinimg.com/originals/a2/49/99/a2499952422c0736b9bf56421c851cd2.jpg" alt="Description of image 5" tabindex="0">
+            <img src="https://media.npr.org/assets/artslife/movies/2010/11/tangled/wanted_wide-876ce93d176aede182080daef78037dfe7745752.jpg?s=1100&c=50&f=jpeg" alt="Description of image 6" tabindex="0">
+            <img src="https://www.pluggedin.com/wp-content/uploads/2019/12/tangled-review-image-638x366-1.jpg" alt="Description of image 7" tabindex="0">
+            <img src="https://lumiere-a.akamaihd.net/v1/images/pp_tangled_herobanner_mobile_20509_a32967be.jpeg?region=0,0,640,480" alt="Description of image 9" tabindex="0">
+            <img src="https://lumiere-a.akamaihd.net/v1/images/open-uri20150608-27674-1nhxtcc_3d6b00b0.jpeg?region=0%2C0%2C1580%2C880" alt="Description of image 10" tabindex="0">        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page has loaded');
+
+            const images = document.querySelectorAll('.gallery img');
+
+            images.forEach((img, index) => {
+                img.setAttribute('tabindex', index + 1);
+
+                img.addEventListener('focus', () => {
+                    console.log(`Image ${index + 1} focused`);
+                });
+
+                img.addEventListener('blur', () => {
+                    console.log(`Image ${index + 1} blurred`);
+                });
+
+                img.addEventListener('mousemove', () => {
+                    console.log(`Mouse moved over image ${index + 1}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
